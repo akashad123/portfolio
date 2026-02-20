@@ -1,51 +1,56 @@
-import { useEffect, useState } from "react";
-
-const sections = ["about", "skills", "projects", "contact"];
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const [active, setActive] = useState("about");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const top = el.offsetTop - 120;
-        const bottom = top + el.offsetHeight;
-
-        if (window.scrollY >= top && window.scrollY < bottom) {
-          setActive(id);
-        }
-      });
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkStyle = (id) =>
-    `cursor-pointer transition ${
-      active === id ? "text-black font-semibold" : "text-gray-500"
-    }`;
-
-  const scrollTo = (id) =>
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-white/70 backdrop-blur-md">
-      <div className="flex justify-center gap-10 py-4 text-sm">
-        {sections.map((id) => (
-          <button
-            key={id}
-            onClick={() => scrollTo(id)}
-            className={linkStyle(id)}
-          >
-            {id.toUpperCase()}
-          </button>
-        ))}
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`
+        fixed top-0 left-0 w-full
+        z-[9999]
+        py-3 sm:py-4
+        px-4 sm:px-6 md:px-12 lg:px-24
+        transition-all duration-300
+        ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'}
+      `}
+    >
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="text-base sm:text-xl font-bold cursor-pointer" onClick={() => scrollToSection("home")}>
+          Akash AD
+        </div>
+        
+        <div className="hidden md:flex gap-6 lg:gap-8">
+          {["about", "skills", "projects", "contact"].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item)}
+              className="capitalize text-sm lg:text-base text-gray-600 hover:text-black transition-colors"
+            >
+              {item}
+            </button>
+          ))}
+        </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

@@ -75,7 +75,7 @@ export const portfolioData = {
         "Full-stack MERN application enabling patients to book appointments effortlessly with comprehensive admin dashboard for managing doctors, departments, patients, and appointment records",
       technologies: ["React", "Node.js", "Express.js", "MongoDB", "Redux"],
       liveDemo: "https://healthify-frontend-henna.vercel.app/",
-      github: "https://github.com/akashad123/healthify",
+      github: "https://github.com/akashad123/healthify_frontend",
       features: [
         "User authentication",
         "Appointment booking system",
@@ -91,7 +91,7 @@ export const portfolioData = {
         "Collaborative platform allowing users to login, upload, and organize their projects efficiently",
       technologies: ["React", "Node.js", "Express.js", "MongoDB"],
       liveDemo: "https://projectfair-frontend-7wn3.vercel.app/",
-      github: "https://github.com/akashad123/projectfair",
+      github: "https://github.com/akashad123/projectfair_frontend",
       features: [
         "User authentication",
         "Project upload functionality",

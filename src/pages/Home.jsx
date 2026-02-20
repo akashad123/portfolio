@@ -8,99 +8,97 @@ import ContactSection from "./ContactSection";
 import Footer from "../components/Footer";
 import MagneticButton from "../components/MagneticButton";
 import img1 from "../assets/home.png";
+import { useRef } from "react";
+import { TypeAnimation } from "react-type-animation";
 
 const Home = () => {
   const { personal } = portfolioData;
+  const containerRef = useRef(null);
+  const homeRef = useRef(null);
 
-  const { scrollY } = useScroll();
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0 },
-  };
+  const { scrollYProgress } = useScroll({
+    target: homeRef,
+    offset: ["start start", "end start"],
+  });
 
-  const textY = useTransform(scrollY, [0, 500], [0, 120]);
-  const imageY = useTransform(scrollY, [0, 500], [0, -120]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.5, 0]);
 
   return (
-    <>
+    <div ref={containerRef} className="relative bg-[#f4f4f4]">
       <Navbar />
 
-      <section
+      <motion.section
+        ref={homeRef}
         id="home"
-        className="min-h-screen bg-[#f4f4f4] flex items-center px-10 md:px-24 overflow-hidden relative z-10"
+        style={{ opacity }}
+        className="
+          fixed top-0 left-0 w-full
+          min-h-screen
+          bg-[#f4f4f4]
+          flex items-center
+          px-6 sm:px-10 md:px-16 lg:px-24
+          pt-15 lg:pt-0
+          overflow-hidden
+          z-10
+        "
       >
-        <div className="grid lg:grid-cols-2 items-center w-full gap-16">
-          <motion.div
-            style={{ y: textY }}
-            className="space-y-8"
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.15 } },
-            }}
-          >
-            <motion.p
-              variants={fadeUp}
-              className="text-gray-500 tracking-[4px] uppercase text-sm"
-            >
+        {/* Grid Background */}
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000014_1px,transparent_1px),linear-gradient(to_bottom,#00000014_1px,transparent_1px)] bg-[size:20px_20px]" />
+        </div>
+        <div className="grid lg:grid-cols-2 items-center w-full gap-5 lg:gap-20">
+          {/* LEFT CONTENT */}
+          <motion.div style={{ y: textY }} className="space-y-6">
+            <p className="text-gray-500 tracking-[4px] uppercase text-xs sm:text-sm">
               {personal.location}
-            </motion.p>
+            </p>
 
-            <motion.h1
-              variants={fadeUp}
+            <h1
               className="
-      text-[110px] md:text-[160px]
-      font-extrabold
-      leading-none
-      bg-gradient-to-r from-black via-gray-700 to-black
-      bg-clip-text text-transparent
-      select-none
-    "
+  text-3xl
+  sm:text-5xl
+  md:text-4xl
+  lg:text-4xl
+  font-extrabold
+  leading-tight
+"
             >
-              Hello
-            </motion.h1>
+              Frontend Developer
+              <br />
+              <span className="text-gray-500">
+                <TypeAnimation
+                  sequence={[
+                    "Specialized in React",
+                    2000,
+                    "Building Scalable UI",
+                    2000,
+                    "Crafting Clean Architecture",
+                    2000,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
+              </span>
+            </h1>
 
-            <motion.h2
-              variants={fadeUp}
-              className="
-      text-4xl md:text-5xl
-      font-semibold
-      relative inline-block
-      after:absolute after:left-0 after:-bottom-2
-      after:w-0 after:h-[3px] after:bg-black
-      after:transition-all after:duration-500
-      hover:after:w-full
-    "
-            >
-              I'm {personal.name}
-            </motion.h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+              Hi, I'm {personal.name}
+            </h2>
 
-            <motion.p
-              variants={fadeUp}
-              className="text-xl text-gray-600 font-medium tracking-wide"
-            >
-              {personal.title}
-            </motion.p>
+            <p className="text-gray-600 max-w-lg text-base sm:text-lg leading-relaxed">
+              Passionate about building scalable, high-performance web
+              applications with clean UI architecture and exceptional user
+              experience.
+            </p>
 
-            <motion.p
-              variants={fadeUp}
-              className="text-gray-500 max-w-md text-lg leading-relaxed"
-            >
-              {personal.tagline}
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex gap-6 pt-6">
+            <div className="flex flex-wrap gap-4 pt-4 md:mb-5">
               <MagneticButton>
                 <a
                   href={personal.resume}
-                  className="
-          px-8 py-3 rounded-xl
-          backdrop-blur-md bg-white/40
-          border border-white/50
-          shadow-lg
-          hover:scale-105
-          transition
-        "
+                  className="px-6 py-3 rounded-xl bg-white shadow-lg hover:scale-105 transition text-sm sm:text-base"
                 >
                   Download CV
                 </a>
@@ -109,40 +107,48 @@ const Home = () => {
               <MagneticButton>
                 <a
                   href={`mailto:${personal.email}`}
-                  className="
-          px-8 py-3 rounded-xl
-          bg-black text-white
-          hover:bg-gray-900
-          transition
-          shadow-xl
-        "
+                  className="px-6 py-3 rounded-xl bg-black text-white hover:bg-gray-900 transition shadow-xl text-sm sm:text-base"
                 >
                   Contact Me
                 </a>
               </MagneticButton>
-            </motion.div>
+            </div>
           </motion.div>
 
-          <motion.div style={{ y: imageY }} className="flex justify-center">
+          {/* RIGHT IMAGE */}
+          <motion.div
+            style={{ y: imageY }}
+            className="flex justify-center lg:mt-0"
+          >
             <img
               src={img1}
               alt="profile"
-              className="w-[450px] md:w-[560px] grayscale rounded-3xl shadow-2xl"
+              className="
+                w-full
+                sm:w-[320px]
+                md:w-[600px]
+                lg:w-[520px]
+                md:h-[600px]
+                lg:h-full
+                grayscale
+                rounded-3xl
+                shadow-2xl
+                object-cover
+              "
             />
           </motion.div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* Spacer for fixed hero */}
+      <div className="h-[120vh] lg:h-screen" />
 
       <AboutSection />
-
       <SkillsSection />
-
       <ProjectsSection />
-
       <ContactSection />
-
       <Footer />
-    </>
+    </div>
   );
 };
 
