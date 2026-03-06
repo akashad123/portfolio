@@ -1,6 +1,6 @@
-import healthifyImg from "../assets/healthify.png";
-import projectFairImg from "../assets/projectfair.png";
-import movieImg from "../assets/aimovie.png";
+import gameLandingImg from "../assets/gameLanding.jpg";
+import cocktailImg from "../assets/cocktail.jpg";
+import movieExplorerImg from "../assets/movieExplorer.jpg";
 
 export const portfolioData = {
   personal: {
@@ -69,59 +69,55 @@ export const portfolioData = {
 
   projects: [
     {
-      title: "Healthify - Hospital Management",
-      image: healthifyImg,
+      title: "Game Landing Page",
+      image: gameLandingImg,
       description:
-        "Full-stack MERN application enabling patients to book appointments effortlessly with comprehensive admin dashboard for managing doctors, departments, patients, and appointment records",
-      technologies: ["React", "Node.js", "Express.js", "MongoDB", "Redux"],
-      liveDemo: "https://healthify-frontend-henna.vercel.app/",
-      github: "https://github.com/akashad123/healthify_frontend",
+        "Modern animated landing page built to explore advanced frontend animations and interactive UI design using GSAP.",
+      technologies: ["React", "GSAP", "Tailwind CSS", "clsx", "react-use"],
+      liveDemo: "https://game-landing-page-nu.vercel.app/",
+      github: "https://github.com/akashad123/game_landing_page",
       features: [
-        "User authentication",
-        "Appointment booking system",
-        "Admin CRUD operations",
-        "Responsive design",
+        "Smooth scroll-based animations",
+        "Interactive UI components",
+        "Responsive modern design",
+        "Clean and modular component structure",
+        "Performance-focused animations with GSAP",
       ],
-      role: "Full-stack development including UI/UX design, API integration, and database management",
+      role: "Frontend development focusing on UI interactions, animation implementation, and responsive layout",
     },
     {
-      title: "Project Fair - Management Platform",
-      image: projectFairImg,
+      title: "Cocktail Animated Website",
+      image: cocktailImg,
       description:
-        "Collaborative platform allowing users to login, upload, and organize their projects efficiently",
-      technologies: ["React", "Node.js", "Express.js", "MongoDB"],
-      liveDemo: "https://projectfair-frontend-7wn3.vercel.app/",
-      github: "https://github.com/akashad123/projectfair_frontend",
+        "Premium animated cocktail website focused on immersive motion design, smooth transitions, and a modern frontend experience.",
+      technologies: ["React", "GSAP", "Tailwind CSS"],
+      liveDemo: "https://gsap-cocktails-lovat-iota.vercel.app/",
+      github: "https://github.com/akashad123/gsap_cocktails",
       features: [
-        "User authentication",
-        "Project upload functionality",
-        "Organized project display",
-        "Intuitive interface",
+        "Smooth scroll animations",
+        "Immersive transitions",
+        "Modern UI design",
+        "Interactive motion effects",
+        "Fully responsive layout",
       ],
-      role: "Frontend and backend development with focus on user experience",
+      role: "Frontend animation and UI development using GSAP for motion-driven interface design",
     },
     {
-      title: "AI Movie Recommendation System",
-      image: movieImg,
+      title: "Movie Explorer Web Application",
+      image: movieExplorerImg,
       description:
-        "Intelligent hybrid movie recommendation engine that combines content-based and collaborative filtering to suggest personalized movies",
-      technologies: [
-        "Python",
-        "Pandas",
-        "Scikit-learn",
-        "NumPy",
-        "MovieLens Dataset",
-      ],
-      liveDemo: "https://akashad123.github.io/MovieRecommendation/",
-      github: "https://github.com/akashad123/MovieRecommendation",
+        "Interactive movie browsing web application powered by the TMDB API that allows users to discover popular movies, search in real time, and manage favorite movies.",
+      technologies: ["React", "JavaScript", "TMDB API", "CSS"],
+      liveDemo: "https://movie-search-app-dun-five.vercel.app/",
+      github: "https://github.com/akashad123/MovieSearchApp",
       features: [
-        "Content-based filtering using movie genres",
-        "Collaborative filtering based on user behavior",
-        "Hybrid recommendation approach",
-        "Interactive movie search and suggestions",
-        "Real-time similarity calculations",
+        "Browse trending and popular movies",
+        "Real-time movie search",
+        "Add movies to favorites list",
+        "External API integration",
+        "Responsive user interface",
       ],
-      role: "Full AI pipeline development - data preprocessing, algorithm implementation, and system integration",
+      role: "Frontend development including API integration, state management, and UI implementation",
     },
   ],
 

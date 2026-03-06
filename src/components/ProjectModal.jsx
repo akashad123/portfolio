@@ -32,7 +32,7 @@ const ProjectModal = ({ project, close }) => {
           borderRadius: '16px',
           maxWidth: '800px',
           width: '100%',
-          maxHeight: '85vh',
+          maxHeight: '90vh',
           overflowY: 'auto',
           position: 'relative'
         }}
@@ -43,8 +43,8 @@ const ProjectModal = ({ project, close }) => {
           alt={project.title}
           style={{
             width: '100%',
-            height: '256px',
-            objectFit: 'fill'
+            height: '350px',
+            objectFit: 'cover'
           }}
         />
         
@@ -70,7 +70,7 @@ const ProjectModal = ({ project, close }) => {
           ✕
         </button>
         
-        <div style={{ padding: '32px' }}>
+        <div style={{ padding: '20px' }}>
           <h2 style={{ 
             fontSize: '24px', 
             fontWeight: 'bold',
@@ -81,8 +81,8 @@ const ProjectModal = ({ project, close }) => {
           
           <p style={{ 
             color: '#4b5563',
-            lineHeight: '1.6',
-            marginBottom: '16px'
+            lineHeight: '1.4',
+            marginBottom: '10px'
           }}>
             {project.description}
           </p>

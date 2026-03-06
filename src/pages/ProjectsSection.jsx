@@ -57,7 +57,7 @@ const ProjectsSection = () => {
           min-h-0 md:min-h-0 lg:min-h-0 xl:min-h-screen
         "
       >
-        {/* Grid Background */}
+  
   <div className="absolute inset-0 -z-10 pointer-events-none">
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
   </div>
